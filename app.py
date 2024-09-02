@@ -1,7 +1,6 @@
 from os import write
 import pandas as pd
 import numpy as np
-import ffn
 import yfinance as yf
 import streamlit as st
 import matplotlib.pyplot as plt
