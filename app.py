@@ -50,6 +50,9 @@ descriptive_stats = data.describe()
 st.subheader('2. Descriptive Statistics of The Magnificient 7 Stocks')
 st.write('The descriptive analysis statistics provides a summary of key metrics that describe the distribution and characteristics of the stock prices. The count (number of dataset), mean(i.e average), minimum (the least price the stock traded), standard deviation (which shows how the data deviates from the mean), quartiles (25, 50, & 75), and maximum(the highest price the stock traded for the five year period). ')
 st.dataframe(descriptive_stats)
+st.write('From the analysis, we are able to deduce Nvidia's lowest trading price (min) as $4.08 and its highest (max) as $135.58.')
+st.write('Also, it's important to understand that the standard deviation indicates the extent to which stock prices have deviated from their average; thus, a higher stock price typically corresponds to a greater standard deviation. This is clearly demonstrated by META, which has a standard deviation of 103.47.')
+
 
 stock_returns = data.pct_change()
 Average_daily_return = stock_returns.mean()
@@ -58,6 +61,7 @@ Average_daily_return.plot(kind='bar', label='Average daily return', color='skybl
 st.subheader('3. Average daily return of The magnificient 7 Stocks')
 st.write('The average daily return represents the mean return each stock generates on a typical trading day. This metric helps investors understand the potential profitability of each stock on a day-to-day basis. High average daily returns can indicate strong performance, while lower or negative averages may suggest weaker performance or higher risk.')
 st.pyplot(fig)
+st.write('The analysis reveals that Nvidia leads with the highest average daily return of about 0.32%. Following closely is Tesla, with an average daily return of about 0.29%. In contrast, Amazon has the lowest average daily return at approximately 0.079%.')
 
 import plotly.express as px
 Percentage_change = (data.iloc[-1] - data.iloc[0]) / data.iloc[0] * 100
@@ -65,6 +69,7 @@ Percentage_change_chart=px.bar(Percentage_change, x=Percentage_change.index, y=P
 st.subheader('4. Percentage change of The magnificient 7 Stocks')
 st.write('The percentage change of the Magnificent 7 stocks refers to the overall change in the stock prices for the last 5 years, expressed as a percentage. This metric helps in assessing how much each stock has gained or lost over that time frame.')
 st.plotly_chart(Percentage_change_chart)
+st.write('The analysis reveals that Nvidia has achieved an impressive gain of approximately 2,896% over the five-year period. In contrast, Amazon has experienced a significantly lower gain of 99.5% during the same timeframe.')
 
 Covariance=stock_returns.cov()
 Standard_deviation=stock_returns.std()
@@ -73,12 +78,15 @@ Volatility_plot=px.bar(Volatility,x=Volatility.index,y=Volatility.values,labels=
 st.subheader('5. Volatility of The magnificient 7 Stocks')
 st.write('Volatility is a key indicator of risk, as it shows how much a stock price fluctuates over time. The volatility of the Magnificent 7 stocks shows the degree of variation in their stock prices over a specific period, measured by the standard deviation of daily returns.')
 st.plotly_chart(Volatility_plot)
+st.write('In terms of volatility, measured by the deviation of stocks from their mean, Tesla ranks as the most volatile stock among the seven, with a value of 0.041. Apple and Microsoft seem to exhibit lower volatility, both falling below 0.02.')
 
 Correlation = data.corr()
 Correlation_plot=px.imshow(Correlation,labels=dict(x="Ticker", y="Ticker", color="Correlation"),x=Correlation.columns,y=Correlation.columns, color_continuous_scale='RdBu')
 st.subheader('6. Correlation of The magnificient 7 Stocks')
 st.write('Correlation is a measure that indicates how two stocks move in relation to each other. The correlation of the Magnificent 7 stocks refers to the statistical relationship between the stock price movements of these seven leading tech companies.')
 st.plotly_chart(Correlation_plot)
+st.write('The correlation analysis shows that Nvidia, Microsoft, Apple, and Alphabet exhibit strong positive correlations, particularly between Microsoft and Apple at 0.93. In contrast, Tesla shows the weakest correlations with the other stocks, indicating that its performance is less influenced by market movements of its peers.')
+
 
 import plotly.graph_objects as go
 Risk_return = pd.DataFrame({'Risk':Standard_deviation, 'Average Daily Return': Average_daily_return })
@@ -99,6 +107,7 @@ Risk_return_chart.update_layout(
 st.subheader('7. Risk vs Average Daily Return')
 st.write('The Risk vs. Return analysis examines the relationship between the risk associated with each stock and the returns they generate. This analysis helps investors understand the trade-off between the potential rewards of investing in a stock and the level of risk they must assume.')
 st.plotly_chart(Risk_return_chart)
+st.write('The analysis of risk and average daily return reveals that Nvidia offers the highest average daily return of approximately 0.32% with a risk level of 0.0336, while Tesla carries the highest risk at 0.0414, it provides a significant average daily return of 0.30% but not up to Nvidia. Meanwhile, Microsoft has a lower average daily return of 0.11% and a risk of 0.0191. and Amazon shows the lowest average daily return at 0.08% with a risk of 0.0223. ')
 
 
 garch_model = {}
@@ -132,9 +141,11 @@ ax.legend(title='Stocks', fontsize=11)
 ax.set_xlabel('Days')
 ax.set_ylabel('Price')
 plt.grid(True, linestyle='--', alpha=0.6)
+plt.figtext(0.5, -0.02, "Simulated Stock Prices for the Magnificient 7 Stocks ", ha='center', fontsize=12)
 st.subheader('8. Simulated Stock Prices for the Magnificient 7 Stocks (GARCH)')
 st.write('The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model was used to simulate their future stock prices. This simulation captures the potential price movements based on the estimated volatility of each stock. By forecasting these prices over the next six months, the model provides a visual representation of how these seven stocks might behave.')
 st.pyplot(fig)
+st.write('The analysis forecasts price movements for all seven stocks over the next 180 days, with Meta identified as an outlier, as its price is projected to exceed $800 within the next month. Apple also shows significant potential, with predictions of steady growth over the next four months, eventually soaring beyond $500. In contrast, the other stocks are expected to maintain relatively stable prices, except for Amazon, which is anticipated to decline below its current price within the next six months.')
 
 st.subheader('Conclusion')
 st.write('The quantitative analysis of the Magnificent 7 stocks—NVIDIA, Microsoft, Amazon, Apple, Tesla, Meta, and Alphabet—provides valuable insights into their performance, risk, and interrelationships. Together, these analyses offer a comprehensive understanding of the strengths and risks associated with the Magnificent 7, guiding investment strategies in the dynamic tech sector.')
