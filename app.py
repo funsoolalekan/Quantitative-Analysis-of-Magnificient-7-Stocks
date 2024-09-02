@@ -146,7 +146,7 @@ ax.set_ylabel('Price')
 plt.grid(True, linestyle='--', alpha=0.6)
 plt.figtext(0.5, -0.02, "Simulated Stock Prices for the Magnificent 7 Stocks ", ha='center', fontsize=12)
 st.subheader('8. Simulated stock prices for the magnificent 7 stocks (GARCH)')
-st.write('The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model was used to simulate their future stock prices. This simulation captures the potential price movements based on the estimated volatility of each stock. By forecasting these prices over the next six months, the model provides a visual representation of how these seven stocks might behave.')
+st.write('The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model was used to simulate their future stock prices. This simulation captures the potential price movements based on the estimated volatility of each stock. By forecasting these prices over the next six months, the model provides a visual representation of how these seven stocks might trade.')
 st.pyplot(fig)
 st.markdown('The analysis forecasts price movements for all seven stocks over the next 180 days, with Meta identified as an outlier, as its price is projected to exceed $800 within the next month. Apple also shows significant potential, with predictions of steady growth over the next four months, eventually soaring beyond 500. In contrast, the other stocks are expected to maintain relatively stable prices, except for Amazon, which is anticipated to decline below its current price within the next six months.')
 
