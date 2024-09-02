@@ -5,6 +5,8 @@ import yfinance as yf
 import streamlit as st
 import matplotlib.pyplot as plt
 from arch import arch_model
+import plotly.express as px
+
 Nividia = yf.Ticker("NVDA").history(period='5y')
 NVDA=Nividia['Close']
 Microsoft = yf.Ticker("MSFT").history(period='5y')
@@ -20,11 +22,11 @@ META=Meta['Close']
 Alphabet = yf.Ticker("GOOGL").history(period='5y')
 GOOGL=Alphabet['Close'] 
 
-st.title('Quantitative Analysis of Magnificent 7 Stocks')
+st.title('The Quantitative Analysis of Magnificent 7 Stocks')
 st.markdown('By Oluwafunso Olalekan')
 st.subheader('Introduction')
 st.write('The "Magnificent 7" refers to a group of seven leading technology companies NVIDIA (NVDA), Microsoft (MSFT), Amazon (AMZN), Apple (AAPL), Tesla (TSLA), Meta Platforms (META), and Alphabet (GOOGL), known for their significant influence on the broader indices and their role in driving market trends. These seven companies are among the largest in the world by market capitalization and have become key drivers of the overall stock market, particularly within the technology sector. Their performance often reflects broader market trends due to their substantial weighting in major indices like the S&P 500 and Nasdaq.')
-st.write('The quantitative analysis of the Magnificent 7 stocks involves the application of mathematical and statistical techniques to evaluate their historical performance, volatility, and potential future trends. The analysis was carried out using the last 5 years closing daily data of the stocks')
+st.write('The quantitative analysis of the Magnificent 7 stocks involves the application of mathematical and statistical techniques to evaluate their historical performance, volatility, and potential future trends. The analysis was carried out using the last 5 years daily closing data of the stocks')
 
 data = pd.concat([NVDA,MSFT,AMZN,AAPL,TSLA,META,GOOGL], axis=1)
 data.columns = ['NVDA','MSFT','AMZN','AAPL','TSLA','META','GOOGL']
@@ -65,7 +67,7 @@ st.write('The average daily return represents the mean return each stock generat
 st.pyplot(fig)
 st.write('The analysis reveals that Nvidia leads with the highest average daily return of about 0.32%. Following closely is Tesla, with an average daily return of about 0.29%. In contrast, Amazon has the lowest average daily return at approximately 0.079%.')
 
-import plotly.express as px
+
 Percentage_change = (data.iloc[-1] - data.iloc[0]) / data.iloc[0] * 100
 Percentage_change_chart=px.bar(Percentage_change, x=Percentage_change.index, y=Percentage_change.values,labels={'x':'Ticker','y':'Percentage change (%)'})
 st.subheader('4. Percentage change of The magnificent 7 stocks')
@@ -123,7 +125,6 @@ forecasts = {}
 for stocks, model in garch_model.items():
   forecast = model.forecast(horizon=1)
   forecasts[stocks] = forecast.variance.values[0,0]
-
 
 n_days = 180
 price_forecasts = {}
