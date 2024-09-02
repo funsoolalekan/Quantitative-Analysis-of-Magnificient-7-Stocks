@@ -1,7 +1,6 @@
-!pip install yfinance
-!pip install streamlit
-!pip install pyngrok
-!pip install arch
+pip install yfinance
+pip install streamlit
+pip install arch
 from os import write
 import pandas as pd
 import numpy as np
