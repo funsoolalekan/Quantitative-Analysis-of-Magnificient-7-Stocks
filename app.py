@@ -22,7 +22,7 @@ META=Meta['Close']
 Alphabet = yf.Ticker("GOOGL").history(period='5y')
 GOOGL=Alphabet['Close'] 
 
-st.title('The Quantitative Analysis of Magnificent 7 Stocks')
+st.title('Quantitative Analysis of The Magnificent 7 Stocks')
 st.markdown('By Oluwafunso Olalekan')
 st.subheader('Introduction')
 st.write('The "Magnificent 7" refers to a group of seven leading technology companies NVIDIA (NVDA), Microsoft (MSFT), Amazon (AMZN), Apple (AAPL), Tesla (TSLA), Meta Platforms (META), and Alphabet (GOOGL), known for their significant influence on the broader indices and their role in driving market trends. These seven companies are among the largest in the world by market capitalization and have become key drivers of the overall stock market, particularly within the technology sector. Their performance often reflects broader market trends due to their substantial weighting in major indices like the S&P 500 and Nasdaq.')
