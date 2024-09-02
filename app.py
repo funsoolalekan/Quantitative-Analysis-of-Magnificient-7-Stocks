@@ -51,7 +51,7 @@ st.subheader('2. Descriptive Statistics of The Magnificient 7 Stocks')
 st.write('The descriptive analysis statistics provides a summary of key metrics that describe the distribution and characteristics of the stock prices. The count (number of dataset), mean(i.e average), minimum (the least price the stock traded), standard deviation (which shows how the data deviates from the mean), quartiles (25, 50, & 75), and maximum(the highest price the stock traded for the five year period). ')
 st.dataframe(descriptive_stats)
 st.write('From the analysis, we can deduce Nvidia lowest trading price (min) as $4.08 and its highest (max) as $135.58.')
-st.write('Also, it's important to understand that the standard deviation indicates the extent to which stock prices have deviated from their average; thus, a higher stock price typically corresponds to a greater standard deviation. This is clearly demonstrated by META, which has a standard deviation of 103.47.')
+st.write('Also, it is important to understand that the standard deviation indicates the extent to which stock prices have deviated from their average; thus, a higher stock price typically corresponds to a greater standard deviation. This is clearly demonstrated by META, which has a standard deviation of 103.47.')
 
 
 stock_returns = data.pct_change()
