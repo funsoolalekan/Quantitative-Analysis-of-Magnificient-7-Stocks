@@ -50,7 +50,7 @@ descriptive_stats = data.describe()
 st.subheader('2. Descriptive Statistics of The Magnificient 7 Stocks')
 st.write('The descriptive analysis statistics provides a summary of key metrics that describe the distribution and characteristics of the stock prices. The count (number of dataset), mean(i.e average), minimum (the least price the stock traded), standard deviation (which shows how the data deviates from the mean), quartiles (25, 50, & 75), and maximum(the highest price the stock traded for the five year period). ')
 st.dataframe(descriptive_stats)
-st.markdown('From the analysis, we can deduce Nvidia lowest trading price (min) as $4.08 and its highest (max) as $135.58.')
+st.markdown('From the analysis, we can deduce Nvidia lowest trading price (min) as 4.08 and its highest (max) as $135.58.')
 st.write('Also, it is important to understand that the standard deviation indicates the extent to which stock prices have deviated from their average; thus, a higher stock price typically corresponds to a greater standard deviation. This is clearly demonstrated by META, which has a standard deviation of 103.47.')
 
 
@@ -145,7 +145,7 @@ plt.figtext(0.5, -0.02, "Simulated Stock Prices for the Magnificient 7 Stocks ",
 st.subheader('8. Simulated Stock Prices for the Magnificient 7 Stocks (GARCH)')
 st.write('The GARCH (Generalized Autoregressive Conditional Heteroskedasticity) model was used to simulate their future stock prices. This simulation captures the potential price movements based on the estimated volatility of each stock. By forecasting these prices over the next six months, the model provides a visual representation of how these seven stocks might behave.')
 st.pyplot(fig)
-st.markdown('The analysis forecasts price movements for all seven stocks over the next 180 days, with Meta identified as an outlier, as its price is projected to exceed $800 within the next month. Apple also shows significant potential, with predictions of steady growth over the next four months, eventually soaring beyond $500. In contrast, the other stocks are expected to maintain relatively stable prices, except for Amazon, which is anticipated to decline below its current price within the next six months.')
+st.markdown('The analysis forecasts price movements for all seven stocks over the next 180 days, with Meta identified as an outlier, as its price is projected to exceed $800 within the next month. Apple also shows significant potential, with predictions of steady growth over the next four months, eventually soaring beyond 500. In contrast, the other stocks are expected to maintain relatively stable prices, except for Amazon, which is anticipated to decline below its current price within the next six months.')
 
 st.subheader('Conclusion')
 st.write('The quantitative analysis of the Magnificent 7 stocks—NVIDIA, Microsoft, Amazon, Apple, Tesla, Meta, and Alphabet—provides valuable insights into their performance, risk, and interrelationships. Together, these analyses offer a comprehensive understanding of the strengths and risks associated with the Magnificent 7, guiding investment strategies in the dynamic tech sector.')
